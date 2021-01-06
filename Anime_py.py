@@ -5,12 +5,14 @@ import time
 import urllib
 from urllib.request import Request, urlopen
 import urllib.request
+
 reqest = Request('https://www.animefreak.tv/home/anime-list', headers={'User-Agent': 'Mozilla/5.0'})
 html = urlopen(reqest).read().decode("utf-8")
 a = re.findall(r'<li><a href="(.*?)"', html)
 zyx = input("Whats The Name Of The Anime You Wanna Watch: ")
 matching = [s for s in a if zyx in s]
 y = -1
+
 while y < len(matching) - 1:
     y += 1
     reqest = Request(matching[y], headers={'User-Agent': 'Mozilla/5.0'})
